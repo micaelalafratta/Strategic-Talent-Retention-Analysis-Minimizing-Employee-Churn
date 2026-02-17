@@ -90,12 +90,12 @@ Por este motivo:
 ```DAX
 left company = CALCULATE(COUNTROWS('hr_data_clean'),
                         'hr_data_clean'[attrition] = "ex-employee")
-                        ```
+```
 
 ```DAX
 PT left = CALCULATE([left company],
                     'hr_data_clean'[workinghours] = "part time")
-                    ```
+```
 
 ```DAX
 % PT left = DIVIDE([PT left],[left company],0)
@@ -105,7 +105,7 @@ PT left = CALCULATE([left company],
 attrition rate = DIVIDE(CALCULATE(COUNTROWS('hr_data_clean'),
                         'hr_data_clean'[attrition] = "ex-employee"),
                         COUNTROWS('hr_data_clean'))
-                        ```
+```
 ---
 
 🔹 Medidas de Satisfacción Promedio
