@@ -85,20 +85,50 @@ Por este motivo:
 
 ---
 
-### 📌 Métricas de Rotación
-
-**Left Company**
+🔹 Métricas de Rotación
 
 ```DAX
 left company = CALCULATE(COUNTROWS('hr_data_clean'),
                         'hr_data_clean'[attrition] = "ex-employee")
+                        ```
 
+```DAX
 PT left = CALCULATE([left company],
                     'hr_data_clean'[workinghours] = "part time")
+                    ```
 
+```DAX
 % PT left = DIVIDE([PT left],[left company],0)
+```
 
+```DAX
 attrition rate = DIVIDE(CALCULATE(COUNTROWS('hr_data_clean'),
                         'hr_data_clean'[attrition] = "ex-employee"),
-                    COUNTROWS('hr_data_clean'))
+                        COUNTROWS('hr_data_clean'))
+                        ```
+---
+
+🔹 Medidas de Satisfacción Promedio
+
+```DAX
+avg env sat = AVERAGE('hr_data_clean'[environmentsatisfaction])
+```
+
+```DAX
+avg job invol = AVERAGE('hr_data_clean'[jobinvolvement])
+```
+
+```DAX
+avg job sat = AVERAGE('hr_data_clean'[jobsatisfaction])
+```
+
+```DAX
+avg relationship sat = AVERAGE('hr_data_clean'[relationshipsatisfaction])
+```
+
+```DAX
+avg work life balance = AVERAGE('hr_data_clean'[worklifebalance])
+```
+
+---
 
