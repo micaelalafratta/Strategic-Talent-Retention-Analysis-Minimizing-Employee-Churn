@@ -35,7 +35,6 @@ Por este motivo:
 - **Número de registros:** 1614 
 - **Codificación:** 1252: Western European (Windows)  
 - **Separador:** Coma  
-- **Comentarios iniciales:** Power BI crea automáticamente una columna adicional para conteo de filas (`column 0`).
 
 ---
 
@@ -131,3 +130,4 @@ avg work life balance = AVERAGE('hr_data_clean'[worklifebalance])
 
 ---
 
+🔹 Añade aquí más campos calculados...
