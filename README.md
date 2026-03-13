@@ -1,76 +1,60 @@
-# Léeme:
+# 📊 Employee Retention Analysis: ABC Corporation (End-to-End)
 
-¡Hola! Lee atentamente qué encontrarás en este repositorio.
+## 🏢 Contexto del Proyecto
+Este proyecto simula un escenario real de consultoría profesional para una empresa cliente ubicada en Estados Unidos. Debido a la naturaleza internacional del encargo:
+- La documentación técnica está en **español**.
+- El modelo de datos, métricas y dashboards en Power BI están en **inglés**.
 
-## Contenido del respositorio: 
-Aquí encontrarás los archivos del proyecto grupal del Módulo 3 del equipo 3. 
+El objetivo principal es identificar patrones de rotación y proporcionar soluciones accionables basadas en datos para reducir la fuga de talento.
 
-Por una parte, si quieres tener información de todo el proceso de análisis de datos e información para entender dicho análisis, consulta el archivo "Info_proyecto.md".Encontrarás, además, archivos técnicos de cada fase del proyecto. 
+---
 
-Por otra parte, encontrarás el informe final de la consultoría para RR.HH. 
+## 📂 Estructura del Repositorio
+El proyecto se organiza de forma modular para facilitar la auditoría y replicabilidad:
 
-En cuanto a la visualización, encontrarás una carpeta llamada Tableau con los archivos de trabajo de Tableau. Puedes visualizar el resultado final en Tableau Public: https://public.tableau.com/app/profile/bootcamp.project/viz/TheSimpsonsanlisisxito/PORTADA?publish=yes
+* **`CONSULTORÍA/`**: Contiene las diapositivas de presentación y el informe ejecutivo con acciones clave para RRHH.
+* **`EDA_LIMPIEZA_ANALISIS_SQL/`**:
+    * `Fase_1_EDA.ipynb`: Exploración inicial de datos.
+    * `Fase_2_limpieza_datos.ipynb`: Limpieza y preprocesamiento de `hr_raw_data.csv`.
+    * `Fase_3_analisis_descriptivo.ipynb`: Análisis profundo y visualización estática.
+    * `Fase_4_codigo_sql.ipynb` & `Fase_4_bbdd_sql.sql`: Implementación de la base de datos en **MySQL**.
+* **`VISUALIZACIÓN/`**: Dashboard interactivo (`.pbix`) desarrollado en Power BI.
+* **`images/`**: Recursos visuales y capturas del proyecto.
 
-## Archivos:
+---
 
+## 🛠️ Stack Tecnológico
+* **Análisis y Limpieza:** Python (`pandas`, `numpy`, `matplotlib`, `seaborn`).
+* **Base de Datos:** MySQL.
+* **Business Intelligence:** Power BI Desktop (DAX & Power Query).
 
-**Carpeta "FINAL": archivos técnicos finales del proyecto**
+---
 
-    - "Fase_1_EDA.ipynb" - EDA. Exploración datos.
-    - "Fase_2_limpieza_datos.ipynb". Limpieza datos. Creación CSV limpio.
-    - "Fase_3_analisis_descriptivo.ipynb". Visualización y análisis.
-    - "Fase_4_codigo_sql.ipynb". Volcado a BB.DD.
-    - "Fase_4_bbdd_sql.sql". BB.DD. SQL 
-    - "Info_proyecto.md". Información sobre el contenido y estructura del ejercicio, así como consideraciones del análisis.  
-    - "src". Carpeta archivos soporte. 
+## 💡 Insights y Conclusiones Clave
+A través del análisis, detectamos puntos críticos de abandono en la organización:
 
-    Archivos CSV a cargar para leer los archivos Jupyter:
-    - "hr_raw_data.csv". Datos en bruto. (Fase 1 y 2)
-    - "hr_data_clean.csv". Datos limpios. (Fase 3 y 4)
-     
+* **⚠️ El "Abismo del Talento":** Empleados de alto desempeño, sin acciones (stock options) y con más de 4 años sin promoción presentan una tasa de rotación del 31.82%.
+* **📍 Impacto de la Distancia:** Los trayectos de 12 a 28 km incrementan significativamente la probabilidad de renuncia.
+* **🕒 Jornada Laboral:** El personal *part-time* representa el 62% de las salidas de la empresa.
+* **🎂 Factor Edad:** La mayor rotación se concentra en jóvenes entre 18 y 22 años, mientras que la estabilidad máxima ocurre entre los 38 y 41 años.
 
-**Carpeta "CONSULTORÍA" : informe y presentación consultoría**
-- "Informe final". Informe conclusiones consultoría para RR.HH.
-- "PPTX conclusiones_equipo 3". 
+---
 
+## 🚀 Próximos Pasos Recomendados
+1.  **Plan de Carrera 360º**: Especialmente para roles con alta rotación como *Sales Representatives* y *Human Resources*.
+2.  **Incentivos Estratégicos**: Ofrecer *stock options* (niveles 1-2) para reducir la fuga de talento clave.
+3.  **Flexibilidad Geográfica**: Implementar modelos híbridos para empleados que viven lejos de la oficina.
 
-## Qué librerías necesitas: 
+---
 
-```
-import pandas as pd
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np 
-```
+## 👥 Equipo de Consultoría
+Este proyecto fue desarrollado por:
 
-## Qué encontrarás dentro: 
+* **ARIANA CALDEIRA** | [GitHub](https://github.com/ariana-caldeira)
+* **ELENA PAVÓN** | [GitHub](https://github.com/elenapavonfernandez-ui)
+* **MARÍA GÓMEZ** | [GitHub](https://github.com/mariagmzm)
+* **MICAELA LAFRATTA** | [GitHub](https://github.com/micaelalafratta)
+* **NIEVES PÉREZ** | [GitHub](https://github.com/NievesPerez-Data)
 
-
-### Por ejemplo:
-
-Tablas: 
-
-![alt text](image.png)
-
-Código de limpieza:
-
-```python
-
-#NORMALIZACIÓN MARITALSTATUS. 
-df['maritalstatus'] = df['maritalstatus'].fillna('unknown').replace('marreid', 'married')
-
-
-#DISTANCEFROMHOME
-numerador = df[df['distancefromhome']<0].shape[0]
-denominador = df.shape[0] #ACCEDEMOS AL NÚMERO TOTAL DE FILAS
-porcentaje_negativos = (numerador/denominador)*100 #EVITAMOS NÚMEROS MÁGICOS
-print(f'porcentaje de negativos que contiene distancefromhome: {porcentaje_negativos}')
-df['distancefromhome'] = abs(df['distancefromhome']) #CON ABS TODA LA SERIE FUNCIONA COMO UN VALOR ABSOLUTO
-print(f'comprobamos cantidad de negativos en distancefromhome, tras conversion en valor absoluto: {df[df['distancefromhome']<0].shape[0]}')
-```
-
-
-Gráficas para visualizar:
-
-![alt text](<rotacion promocion x rol.png>)
+---
+> **Nota del Profe:** "Los datos no mienten, pero solo dicen la verdad si haces las preguntas correctas". Este proyecto es una prueba de ello.
